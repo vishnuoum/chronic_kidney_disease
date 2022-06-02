@@ -18,7 +18,8 @@ def extract(path):
     try:
         values={}
         keys=["BP","SG","Albumin","PC","PCC","BGR","BU","SC","sc","Sodium","Hb","PCV","WBC","RBC"]
-        data=pytesseract.image_to_string(Image.open(path))
+        custom_config = r'--oem 3 --psm 6'
+        data=pytesseract.image_to_string(Image.open(path), config=custom_config)
         for line in data.splitlines():
             # print(line)
             delete=[]
